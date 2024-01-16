@@ -1,0 +1,8 @@
+.galeria {
+  border: 1px dashed green;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  min-width: 1200px;
+  width: 100%;
+}
