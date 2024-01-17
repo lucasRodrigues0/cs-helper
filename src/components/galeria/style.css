@@ -1,8 +1,8 @@
 .galeria {
   border: 1px dashed green;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
   flex-wrap: wrap;
-  min-width: 1200px;
+  justify-content: space-evenly;
   width: 100%;
 }
