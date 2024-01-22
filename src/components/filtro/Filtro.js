@@ -1,4 +1,5 @@
 import './style.css'
+import {MAPA, LADO} from '../../utils/constants';
 
 export const Filtro = ({onClickSelectMapa, onClickSelectLado}) => {
   return (
@@ -6,22 +7,21 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado}) => {
       <label>
         Selecione o mapa
         <select onChange={onClickSelectMapa}>
-          <option>Todos</option>
-          <option>Mirage</option>
-          <option>Overpass</option>
-          <option>Vertigo</option>
-          <option>Inferno</option>
-          <option>Ancient</option>
-          <option>Anubis</option>
-          <option>Nuke</option>
+           {
+             MAPA.map((mapa) => 
+             <option key={mapa} value={mapa}>{mapa}</option>
+            )
+           }
         </select>
       </label>
       <label>
         Selecione o Lado
         <select onChange={onClickSelectLado}>
-          <option>Todos</option>
-          <option>CT</option>
-          <option>T</option>
+        {
+             LADO.map((lado) => 
+             <option key={lado} value={lado}>{lado}</option>
+            )
+        }
         </select>
       </label>
     </div>

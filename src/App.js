@@ -53,7 +53,7 @@ function App() {
   return (
     <div className='container'>
       <div className="App">
-        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado}/>
+        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado} />
         <Galeria galeria={galeria} />      
       </div>
     </div>
