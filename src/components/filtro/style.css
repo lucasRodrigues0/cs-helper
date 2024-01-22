@@ -1,23 +1,18 @@
-/* .filtro {
-  display: inline-block;
+.filtro {
+  background-color: #F2B718;
+  font-weight:bold;
+  font-size: 16px;
+  height: 50px;
 }
 
-.filtro-button {
+.filtro label {
+  margin-left: 10px;
+}
+
+.filtro select {
+  background-color: #F2B718;
+  border: none;
+  height: 100%;
   width: 100px;
+  text-align: center;
 }
-
-.opcoes {
-  display: none;
-  position: absolute;
-}
-
-.opcoes label {
-  display: block;
-}
-
-.filtro:hover .opcoes {
-  display: block;
-  width: 200px;
-  height: 200px;
-  background-color: gray;
-} */

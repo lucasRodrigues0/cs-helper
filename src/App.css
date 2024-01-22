@@ -4,10 +4,8 @@
 }
 
 .App {
-  border: 2px dashed purple;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 90%;
-  min-width: 1200px;
 }
