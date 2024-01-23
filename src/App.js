@@ -9,6 +9,7 @@ function App() {
   const [galeria, setGaleria] = useState(videosMock);
   const [filtroMapa, setFiltroMapa] = useState("Todos");
   const [filtroLado, setFiltroLado] = useState("Todos");
+  const [filtroCategoria, setFiltroCategoria] = useState("Todos");
 
   const aplicarFiltros = () => {
     let galeriaFiltrada = [...videosMock.videos];
@@ -19,6 +20,10 @@ function App() {
 
     if(filtroLado !== "Todos") {
       galeriaFiltrada = galeriaFiltrada.filter((video) => video.lado === filtroLado);
+    }
+
+    if(filtroCategoria !== "Todos") {
+      galeriaFiltrada = galeriaFiltrada.filter((video) => video.categoria === filtroCategoria);
     }
     
     setGaleria({
@@ -33,18 +38,28 @@ function App() {
     const mapa = event.target.value;
 
     setFiltroMapa(mapa);
+
   }
 
   const onClickSelectLado = (event) => {
+
     const lado = event.target.value;
     
     setFiltroLado(lado);
 
   }
 
+  const onClickSelectCategoria = (event) => {
+
+    const categoria = event.target.value;
+
+    setFiltroCategoria(categoria);
+
+  }
+
   useEffect(() => {
     aplicarFiltros();
-  }, [filtroMapa, filtroLado]);
+  }, [filtroMapa, filtroLado, filtroCategoria]);
 
   useEffect(() => {
     setGaleria({...videosMock});
@@ -53,7 +68,7 @@ function App() {
   return (
     <div className='container'>
       <div className="App">
-        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado} />
+        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado} onClickSelectCategoria={onClickSelectCategoria}/>
         <Galeria galeria={galeria} />      
       </div>
     </div>

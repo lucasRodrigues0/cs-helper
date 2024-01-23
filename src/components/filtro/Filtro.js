@@ -1,27 +1,37 @@
 import './style.css'
-import {MAPA, LADO} from '../../utils/constants';
+import {MAPA, LADO, CATEGORIA} from '../../utils/constants';
 
-export const Filtro = ({onClickSelectMapa, onClickSelectLado}) => {
+export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCategoria}) => {
   return (
     <div className="filtro">
       <label>
-        Selecione o mapa
+        Mapa:
         <select onChange={onClickSelectMapa}>
            {
              MAPA.map((mapa) => 
-             <option key={mapa} value={mapa}>{mapa}</option>
+             <option key={mapa} value={mapa} id={mapa}>{mapa}</option>
             )
            }
         </select>
       </label>
       <label>
-        Selecione o Lado
+        Lado:
         <select onChange={onClickSelectLado}>
         {
              LADO.map((lado) => 
-             <option key={lado} value={lado}>{lado}</option>
+             <option key={lado} value={lado} id={lado}>{lado}</option>
             )
         }
+        </select>
+      </label>
+      <label>
+        Categoria:
+        <select onChange={onClickSelectCategoria}>
+          {
+              CATEGORIA.map((categoria) => 
+              <option key={categoria} value={categoria} id={categoria}>{categoria}</option>
+            )
+          }
         </select>
       </label>
     </div>
