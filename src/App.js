@@ -1,18 +1,24 @@
 import './App.css';
 import { Galeria } from './components/galeria';
-import { videosMock } from './mocks/videos';
 import { Filtro } from './components/filtro';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
 
-  const [galeria, setGaleria] = useState(videosMock);
+  const [galeria, setGaleria] = useState([{videos: []}]);
+  const [galeriaInicial, setGaleriaInicial] = useState([{videos: []}]);
   const [filtroMapa, setFiltroMapa] = useState("Todos");
   const [filtroLado, setFiltroLado] = useState("Todos");
   const [filtroCategoria, setFiltroCategoria] = useState("Todos");
 
+  const client = axios.create({
+    baseURL: "http://localhost:3000"
+  });
+
+  
   const aplicarFiltros = () => {
-    let galeriaFiltrada = [...videosMock.videos];
+    let galeriaFiltrada = galeria.videos;
 
     if(filtroMapa !== "Todos") {
       galeriaFiltrada = galeriaFiltrada.filter((video) => video.mapa === filtroMapa);
@@ -26,10 +32,10 @@ function App() {
       galeriaFiltrada = galeriaFiltrada.filter((video) => video.categoria === filtroCategoria);
     }
     
-    setGaleria({
-      ...galeria,
+    setGaleria((prevGaleria) => ({
+      ...prevGaleria,
       videos: galeriaFiltrada
-    })
+    }))
 
   }
 
@@ -37,7 +43,7 @@ function App() {
 
     const mapa = event.target.value;
 
-    setFiltroMapa(mapa);
+    setFiltroMapa(mapa === filtroMapa ? "Todos" : mapa);
 
   }
 
@@ -45,7 +51,7 @@ function App() {
 
     const lado = event.target.value;
     
-    setFiltroLado(lado);
+    setFiltroLado(lado === filtroLado ? "Todos" : lado);
 
   }
 
@@ -53,7 +59,7 @@ function App() {
 
     const categoria = event.target.value;
 
-    setFiltroCategoria(categoria);
+    setFiltroCategoria(categoria === filtroCategoria ? "Todos" : categoria);
 
   }
 
@@ -62,7 +68,11 @@ function App() {
   }, [filtroMapa, filtroLado, filtroCategoria]);
 
   useEffect(() => {
-    setGaleria({...videosMock});
+    client.get('/videos').then((response) => {
+      setGaleria(() => ({
+        videos: response.data
+      }));
+    });
   }, []);
 
   return (
