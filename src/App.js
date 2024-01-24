@@ -31,10 +31,10 @@ function App() {
       galeriaFiltrada = galeriaFiltrada.filter((video) => video.categoria === filtroCategoria);
     }
     
-    setGaleria((prevGaleria) => ({
-      ...prevGaleria,
+    setGaleria({
+      ...galeria,
       videos: galeriaFiltrada
-    }))
+    })
 
   }
 
