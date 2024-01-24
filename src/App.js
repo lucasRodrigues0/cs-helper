@@ -16,9 +16,8 @@ function App() {
     baseURL: "http://localhost:3000"
   });
 
-  
   const aplicarFiltros = () => {
-    let galeriaFiltrada = galeria.videos;
+    let galeriaFiltrada = galeriaInicial.videos;
 
     if(filtroMapa !== "Todos") {
       galeriaFiltrada = galeriaFiltrada.filter((video) => video.mapa === filtroMapa);
@@ -43,7 +42,7 @@ function App() {
 
     const mapa = event.target.value;
 
-    setFiltroMapa(mapa === filtroMapa ? "Todos" : mapa);
+    setFiltroMapa(mapa);
 
   }
 
@@ -51,7 +50,7 @@ function App() {
 
     const lado = event.target.value;
     
-    setFiltroLado(lado === filtroLado ? "Todos" : lado);
+    setFiltroLado(lado);
 
   }
 
@@ -59,7 +58,7 @@ function App() {
 
     const categoria = event.target.value;
 
-    setFiltroCategoria(categoria === filtroCategoria ? "Todos" : categoria);
+    setFiltroCategoria(categoria);
 
   }
 
@@ -69,11 +68,15 @@ function App() {
 
   useEffect(() => {
     client.get('/videos').then((response) => {
-      setGaleria(() => ({
+      setGaleriaInicial(() => ({
         videos: response.data
       }));
     });
   }, []);
+
+  useEffect(() => {
+    setGaleria(galeriaInicial);
+  }, [galeriaInicial]);
 
   return (
     <div className='container'>
