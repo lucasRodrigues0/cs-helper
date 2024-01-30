@@ -5,15 +5,13 @@ export const Galeria = ({galeria}) => {
   return (
       <div className='galeria'>
         {
-          <div className='galeria'>
-            {galeria && galeria.videos ? (
+            galeria && galeria.videos ? (
               galeria.videos.map((video) => (
                 <Video key={video.id} video={video} />
               ))
             ) : (
               <p>Nenhum vídeo disponível.</p>
-            )}
-          </div>
+            )
         }
       </div>
   );
