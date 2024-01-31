@@ -13,3 +13,16 @@
 .video-info {
   margin-left: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+    .video {
+      flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 865px) {
+  .video {
+    flex-basis: 50%;
+    align-items: center;
+  }
+}
