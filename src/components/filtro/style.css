@@ -22,6 +22,7 @@
 
 .filtro-button {
   display: none;
+  width: fit-content;
 }
 
 .filtro label {
