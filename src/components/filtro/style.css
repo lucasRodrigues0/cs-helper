@@ -1,12 +1,27 @@
-.filtro {
+.filtro-container {
   background-color: #F2B718;
+  display: flex;
+  flex-direction: row;
   font-weight:bold;
   font-size: 16px;
   height: 50px;
-  position: fixed;
-  top: 0;
   left: 0;
+  position: fixed;
   right: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.filtro-container.active {
+  display: flex;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.filtro-button {
+  display: none;
 }
 
 .filtro label {
@@ -17,11 +32,32 @@
   background-color: #F2B718;
   border: none;
   height: 100%;
-  width: 100px;
   text-align: center;
   transition: all 0.25s ease-in;
+  width: 100px;
 }
 
 .filtro select:hover {
   background-color: #DBA614;
+}
+
+.icon {
+  border: 1px solid #F2B718;
+  color: #F2B718;
+}
+
+@media screen and (max-width: 865px) {
+  .filtro-container {
+    flex-direction: column;
+    height: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .filtro-button {
+    display: block;
+  }
+
 }
