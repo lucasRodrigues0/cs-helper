@@ -9,6 +9,16 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
   const toggleFiltro = () => {
     setIsActive(!isActive);
   }
+  
+  /* const controlScreenSize = () => {
+    if(window.innerWidth > 865) {
+      setIsActive(false);
+    }
+  }
+
+  useEffect = (() => {
+    controlScreenSize();
+  }, []); */
 
   return (
     <div className="filtro">
@@ -18,7 +28,7 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
         </a>
       </div>
       <div className={`filtro-container ${isActive ? 'active' : ''}`}>
-        <div className='filtro-button'>
+        <div className='filtro-close'>
           <a onClick={toggleFiltro}>
             X
           </a>

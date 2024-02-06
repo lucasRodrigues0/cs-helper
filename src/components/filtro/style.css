@@ -1,5 +1,6 @@
 .filtro-container {
   background-color: #F2B718;
+  box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
   display: flex;
   flex-direction: row;
   font-weight:bold;
@@ -22,7 +23,9 @@
 
 .filtro-button {
   display: none;
-  width: fit-content;
+  padding: 10px;
+  position: fixed;
+  margin-top: 20px;
 }
 
 .filtro label {
@@ -43,8 +46,18 @@
 }
 
 .icon {
-  border: 1px solid #F2B718;
+  border: 2px solid #F2B718;
   color: #F2B718;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.filtro-close {
+  display: none;
+  font-size: 30px;
+  text-align: center;
+  padding: 3px 0;
+  margin: 0 0 10px 0;
 }
 
 @media screen and (max-width: 865px) {
@@ -58,6 +71,10 @@
   }
 
   .filtro-button {
+    display: block;
+  }
+
+  .filtro-close {
     display: block;
   }
 
