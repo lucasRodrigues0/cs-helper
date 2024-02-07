@@ -4,8 +4,25 @@
   box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
   color: #fff;
   display: flex;
-  flex-direction: column;
-  margin: 15px 0;
   flex-basis: content;
+  flex-direction: row;
+  margin: 15px 0;
   padding: 1rem;
+}
+
+.video-info {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .video {
+      flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 865px) {
+  .video {
+    flex-basis: 50%;
+    align-items: center;
+  }
 }

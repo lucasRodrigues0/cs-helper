@@ -1,8 +1,31 @@
-.filtro {
+.filtro-container {
   background-color: #F2B718;
+  box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: row;
   font-weight:bold;
   font-size: 16px;
   height: 50px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.filtro-container.active {
+  display: flex;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.filtro-button {
+  display: none;
+  padding: 10px;
+  position: fixed;
+  margin-top: 20px;
 }
 
 .filtro label {
@@ -13,6 +36,48 @@
   background-color: #F2B718;
   border: none;
   height: 100%;
-  width: 100px;
   text-align: center;
+  transition: all 0.25s ease-in;
+  width: 100px;
+}
+
+.filtro select:hover {
+  background-color: #DBA614;
+}
+
+.icon {
+  border: 2px solid #F2B718;
+  color: #F2B718;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* mudar esse nome depois */
+.filtro-close {
+  background-color: #DBA614;
+  display: none;
+  font-size: 30px;
+  text-align: center;
+  padding: 3px 0;
+  margin: 0 0 10px 0;
+}
+
+@media screen and (max-width: 865px) {
+  .filtro-container {
+    flex-direction: column;
+    height: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .filtro-button {
+    display: block;
+  }
+
+  .filtro-close {
+    display: block;
+  }
+
 }

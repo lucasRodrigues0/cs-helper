@@ -1,39 +1,59 @@
 import './style.css'
 import {MAPA, LADO, CATEGORIA} from '../../utils/constants';
+import {useState} from 'react';
 
 export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCategoria}) => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleFiltro = () => {
+    setIsActive(!isActive);
+  }
+
   return (
     <div className="filtro">
-      <label>
-        Mapa:
-        <select onChange={onClickSelectMapa}>
-           {
-             MAPA.map((mapa) => 
-             <option key={mapa} value={mapa} id={mapa}>{mapa}</option>
-            )
-           }
-        </select>
-      </label>
-      <label>
-        Lado:
-        <select onChange={onClickSelectLado}>
-        {
-             LADO.map((lado) => 
-             <option key={lado} value={lado} id={lado}>{lado}</option>
-            )
-        }
-        </select>
-      </label>
-      <label>
-        Categoria:
-        <select onChange={onClickSelectCategoria}>
+      <div className="filtro-button">
+        <a className="icon" onClick={toggleFiltro}>
+          <i className="fa fa-bars"></i>
+        </a>
+      </div>
+      <div className={`filtro-container ${isActive ? 'active' : ''}`}>
+        <div className='filtro-close'>
+          <a onClick={toggleFiltro}>
+            Ocultar Filtro
+          </a>
+        </div>
+        <label>
+          Mapa:
+          <select onChange={onClickSelectMapa}>
+            {
+              MAPA.map((mapa) => 
+              <option key={mapa} value={mapa} id={mapa}>{mapa}</option>
+              )
+            }
+          </select>
+        </label>
+        <label>
+          Lado:
+          <select onChange={onClickSelectLado}>
           {
-              CATEGORIA.map((categoria) => 
-              <option key={categoria} value={categoria} id={categoria}>{categoria}</option>
-            )
+              LADO.map((lado) => 
+              <option key={lado} value={lado} id={lado}>{lado}</option>
+              )
           }
-        </select>
-      </label>
+          </select>
+        </label>
+        <label>
+          Categoria:
+          <select onChange={onClickSelectCategoria}>
+            {
+                CATEGORIA.map((categoria) => 
+                <option key={categoria} value={categoria} id={categoria}>{categoria}</option>
+              )
+            }
+          </select>
+        </label>
+      </div>
     </div>
   )
 }
