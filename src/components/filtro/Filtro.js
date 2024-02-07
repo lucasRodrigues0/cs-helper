@@ -10,9 +10,13 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
     setIsActive(!isActive);
   }
 
+  const toggleOptions = (e) => {
+    console.log(e.target.textContent);
+  }
+
   return (
     <div className="filtro">
-      <div className="filtro-button">
+      <div className="filtro-toggle-display-button">
         <a className="icon" onClick={toggleFiltro}>
           <i className="fa fa-bars"></i>
         </a>
@@ -23,78 +27,48 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
             Ocultar Filtro
           </a>
         </div>
-        {/* <label>
-          Mapa:
-          <select onChange={onClickSelectMapa}>
-            {
-              MAPA.map((mapa) => 
-              <option key={mapa} value={mapa} id={mapa}>{mapa}</option>
-              )
-            }
-          </select>
-        </label> */}
-        <div className="option">
-          <button>
+        <div className="filtro-option">
+          <button onClick={toggleOptions}>
             Mapa
           </button>
-          <div>
+          <div className="option-container">
             {
               MAPA.map((mapa) => 
-              <div key={mapa} value={mapa} id={mapa}>
-                <a onClick={onClickSelectMapa}>{mapa}</a>
+              <div key={mapa} value={mapa} id={mapa} className="option">
+                <a value={mapa} id={mapa} onClick={onClickSelectMapa}>{mapa}</a>
               </div>
               )
             }
           </div>
         </div>
-        <div className="option">
-          <button>
+        <div className="filtro-option">
+          <button onClick={toggleOptions}>
             Lado
           </button>
-          <div>
+          <div className="option-container">
             {
               LADO.map((lado) => 
-              <div key={lado} value={lado} id={lado}>
-                <a onClick={onClickSelectLado}>{lado}</a>
+              <div key={lado} value={lado} id={lado} className="option">
+                <a value={lado} id={lado} onClick={onClickSelectLado}>{lado}</a>
               </div>
               )
             }
           </div>
         </div>
-        <div className="option">
-          <button>
+        <div className="filtro-option">
+          <button onClick={toggleOptions}>
             Categoria
           </button>
-          <div>
+          <div className="option-container">
             {
               CATEGORIA.map((categoria) => 
-              <div key={categoria} value={categoria} id={categoria}>
-                <a onClick={onClickSelectMapa}>{categoria}</a>
+              <div key={categoria} value={categoria} id={categoria} className="option">
+                <a value={categoria} id={categoria} onClick={onClickSelectCategoria}>{categoria}</a>
               </div>
               )
             }
           </div>
         </div>
-        {/* <label>
-          Lado:
-          <select onChange={onClickSelectLado}>
-          {
-              LADO.map((lado) => 
-              <option key={lado} value={lado} id={lado}>{lado}</option>
-              )
-          }
-          </select>
-        </label> */}
-        {/* <label>
-          Categoria:
-          <select onChange={onClickSelectCategoria}>
-            {
-                CATEGORIA.map((categoria) => 
-                <option key={categoria} value={categoria} id={categoria}>{categoria}</option>
-              )
-            }
-          </select>
-        </label> */}
       </div>
     </div>
   )

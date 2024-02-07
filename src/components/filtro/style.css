@@ -21,7 +21,7 @@
   visibility: visible;
 }
 
-.filtro-button {
+.filtro-toggle-display-button {
   display: none;
   padding: 10px;
   position: fixed;
@@ -32,13 +32,19 @@
   margin-left: 10px;
 }
 
-.filtro select {
+.option-container {
+  display: block;
+  border: 1px solid red;
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+
+.option {
   background-color: #F2B718;
-  border: none;
-  height: 100%;
-  text-align: center;
-  transition: all 0.25s ease-in;
-  width: 100px;
+  border: 1px solid green;
+  font-size: 25px;
+  padding: 15px 0;
+  font-weight: normal;
 }
 
 .filtro select:hover {
@@ -50,6 +56,24 @@
   color: #F2B718;
   padding: 10px;
   border-radius: 5px;
+}
+
+.filtro-option {
+  width: 150px;
+}
+
+.filtro-option button {
+  background-color: #F2B718;
+  border: none;
+  font-size: 25px;
+  height: 100%;
+  padding: 0 25px;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+.filtro-option button:hover {
+  background-color: #DBA614;
 }
 
 /* mudar esse nome depois */
@@ -72,12 +96,22 @@
     visibility: hidden;
   }
 
-  .filtro-button {
+  .filtro-toggle-display-button {
     display: block;
+    position: absolute;
   }
 
   .filtro-close {
     display: block;
+  }
+
+  .filtro-option {
+    height: 50px;
+    width: 100%;
+  }
+
+  .filtro-option button {
+    width: 100%;
   }
 
 }

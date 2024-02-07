@@ -40,24 +40,21 @@ function App() {
 
   const onClickSelectMapa = (event) => {
 
-    const mapa = event.target.value;
-    console.log(mapa);
+    const mapa = event.target.id;
     setFiltroMapa(mapa);
 
   }
 
   const onClickSelectLado = (event) => {
 
-    const lado = event.target.value;
-    console.log(lado);
+    const lado = event.target.id;
     setFiltroLado(lado);
 
   }
 
   const onClickSelectCategoria = (event) => {
 
-    const categoria = event.target.value;
-    console.log(categoria);
+    const categoria = event.target.id;
     setFiltroCategoria(categoria);
 
   }
