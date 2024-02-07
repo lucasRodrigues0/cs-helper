@@ -52,7 +52,9 @@
   border-radius: 5px;
 }
 
+/* mudar esse nome depois */
 .filtro-close {
+  background-color: #DBA614;
   display: none;
   font-size: 30px;
   text-align: center;
