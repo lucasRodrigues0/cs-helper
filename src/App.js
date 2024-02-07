@@ -41,7 +41,7 @@ function App() {
   const onClickSelectMapa = (event) => {
 
     const mapa = event.target.value;
-
+    console.log(mapa);
     setFiltroMapa(mapa);
 
   }
@@ -49,7 +49,7 @@ function App() {
   const onClickSelectLado = (event) => {
 
     const lado = event.target.value;
-    
+    console.log(lado);
     setFiltroLado(lado);
 
   }
@@ -57,7 +57,7 @@ function App() {
   const onClickSelectCategoria = (event) => {
 
     const categoria = event.target.value;
-
+    console.log(categoria);
     setFiltroCategoria(categoria);
 
   }

@@ -23,7 +23,7 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
             Ocultar Filtro
           </a>
         </div>
-        <label>
+        {/* <label>
           Mapa:
           <select onChange={onClickSelectMapa}>
             {
@@ -32,8 +32,50 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
               )
             }
           </select>
-        </label>
-        <label>
+        </label> */}
+        <div className="option">
+          <button>
+            Mapa
+          </button>
+          <div>
+            {
+              MAPA.map((mapa) => 
+              <div key={mapa} value={mapa} id={mapa}>
+                <a onClick={onClickSelectMapa}>{mapa}</a>
+              </div>
+              )
+            }
+          </div>
+        </div>
+        <div className="option">
+          <button>
+            Lado
+          </button>
+          <div>
+            {
+              LADO.map((lado) => 
+              <div key={lado} value={lado} id={lado}>
+                <a onClick={onClickSelectLado}>{lado}</a>
+              </div>
+              )
+            }
+          </div>
+        </div>
+        <div className="option">
+          <button>
+            Categoria
+          </button>
+          <div>
+            {
+              CATEGORIA.map((categoria) => 
+              <div key={categoria} value={categoria} id={categoria}>
+                <a onClick={onClickSelectMapa}>{categoria}</a>
+              </div>
+              )
+            }
+          </div>
+        </div>
+        {/* <label>
           Lado:
           <select onChange={onClickSelectLado}>
           {
@@ -42,8 +84,8 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
               )
           }
           </select>
-        </label>
-        <label>
+        </label> */}
+        {/* <label>
           Categoria:
           <select onChange={onClickSelectCategoria}>
             {
@@ -52,7 +94,7 @@ export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCateg
               )
             }
           </select>
-        </label>
+        </label> */}
       </div>
     </div>
   )
