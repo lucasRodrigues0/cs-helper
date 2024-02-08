@@ -15,9 +15,9 @@
 
 .filtro-container.active {
   display: flex;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
   transform: translateX(0);
-  opacity: 1;
   visibility: visible;
 }
 
@@ -34,17 +34,32 @@
 
 .option-container {
   display: block;
-  border: 1px solid red;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
   transform: translateY(-100%);
   visibility: hidden;
 }
 
+.option-container.active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(0);
+  visibility: visible;
+}
+
 .option {
   background-color: #F2B718;
-  border: 1px solid green;
   font-size: 25px;
-  padding: 15px 0;
   font-weight: normal;
+  padding: 15px 0;
+}
+
+.option:hover {
+  background-color: #DBA614;
+}
+
+.option.selected {
+  border: 2px solid #157E38;
 }
 
 .filtro select:hover {

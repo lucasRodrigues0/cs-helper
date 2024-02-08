@@ -40,21 +40,21 @@ function App() {
 
   const onClickSelectMapa = (event) => {
 
-    const mapa = event.target.id;
+    const mapa = event.target.textContent;
     setFiltroMapa(mapa);
 
   }
 
   const onClickSelectLado = (event) => {
 
-    const lado = event.target.id;
+    const lado = event.target.textContent;
     setFiltroLado(lado);
 
   }
 
   const onClickSelectCategoria = (event) => {
 
-    const categoria = event.target.id;
+    const categoria = event.target.textContent;
     setFiltroCategoria(categoria);
 
   }
@@ -78,7 +78,13 @@ function App() {
   return (
     <div className='container'>
       <div className="App">
-        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado} onClickSelectCategoria={onClickSelectCategoria}/>
+        <Filtro onClickSelectMapa={onClickSelectMapa} 
+                onClickSelectLado={onClickSelectLado} 
+                onClickSelectCategoria={onClickSelectCategoria}
+                filtroMapa={filtroMapa}
+                filtroLado={filtroLado}
+                filtroCategoria={filtroCategoria}
+        />
         <Galeria galeria={galeria}/>
       </div>
     </div>
