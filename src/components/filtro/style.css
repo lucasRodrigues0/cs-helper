@@ -35,14 +35,14 @@
 .option-container {
   display: block;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out; */
   transform: translateY(-100%);
   visibility: hidden;
 }
 
 .option-container.active {
   opacity: 1;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out; */
   transform: translateY(0);
   visibility: visible;
 }
@@ -56,6 +56,7 @@
 
 .option:hover {
   background-color: #DBA614;
+  transition: all 0.3s ease-in-out;
 }
 
 .option.selected {
