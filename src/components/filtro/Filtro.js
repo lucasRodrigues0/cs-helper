@@ -2,57 +2,84 @@ import './style.css'
 import {MAPA, LADO, CATEGORIA} from '../../utils/constants';
 import {useState} from 'react';
 
-export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCategoria}) => {
+export const Filtro = ({onClickSelectMapa, onClickSelectLado, onClickSelectCategoria, filtroMapa, filtroLado, filtroCategoria}) => {
 
-  const [isActive, setIsActive] = useState(false);
+  const [filtroIsActive, setIsActive] = useState(false);
+  const [mapaIsActive, setMapaIsActive] = useState(false);
+  const [ladoIsActive, setLadoIsActive] = useState(false);
+  const [categoriaIsActive, setCategoriaIsActive] = useState(false);
 
   const toggleFiltro = () => {
-    setIsActive(!isActive);
+    setIsActive(!filtroIsActive);
+  }
+
+  const toggleFiltroMapa = (e) => {
+    setMapaIsActive(!mapaIsActive);
+  }
+
+  const toggleFiltroLado = () => {
+    setLadoIsActive(!ladoIsActive);
+  }
+
+  const toggleFiltroCategoria = () => {
+    setCategoriaIsActive(!categoriaIsActive);
   }
 
   return (
     <div className="filtro">
-      <div className="filtro-button">
+      <div className="filtro-toggle-display-button">
         <a className="icon" onClick={toggleFiltro}>
           <i className="fa fa-bars"></i>
         </a>
       </div>
-      <div className={`filtro-container ${isActive ? 'active' : ''}`}>
+      <div className={`filtro-container ${filtroIsActive ? 'active' : ''}`}>
         <div className='filtro-close'>
           <a onClick={toggleFiltro}>
             Ocultar Filtro
           </a>
         </div>
-        <label>
-          Mapa:
-          <select onChange={onClickSelectMapa}>
+        <div className="filtro-option">
+          <button onClick={toggleFiltroMapa}>
+            Mapa
+          </button>
+          <div className={`option-container ${mapaIsActive ? 'active' : ''}`}>
             {
               MAPA.map((mapa) => 
-              <option key={mapa} value={mapa} id={mapa}>{mapa}</option>
+              <div key={mapa} value={mapa} id={mapa} className={`option ${filtroMapa === mapa ? 'selected' : ''}`} onClick={onClickSelectMapa}>
+                <a value={mapa} id={mapa}>{mapa}</a>
+              </div>
               )
             }
-          </select>
-        </label>
-        <label>
-          Lado:
-          <select onChange={onClickSelectLado}>
-          {
-              LADO.map((lado) => 
-              <option key={lado} value={lado} id={lado}>{lado}</option>
-              )
-          }
-          </select>
-        </label>
-        <label>
-          Categoria:
-          <select onChange={onClickSelectCategoria}>
+          </div>
+        </div>
+        <div className="filtro-option">
+          <button onClick={toggleFiltroLado}>
+            Lado
+          </button>
+          <div className={`option-container ${ladoIsActive ? 'active' : ''}`}>
             {
-                CATEGORIA.map((categoria) => 
-                <option key={categoria} value={categoria} id={categoria}>{categoria}</option>
+              LADO.map((lado) => 
+              <div key={lado} value={lado} id={lado} className={`option ${filtroLado === lado ? 'selected' : ''}`} onClick={onClickSelectLado}>
+                <a value={lado} id={lado}>{lado}</a>
+              </div>
               )
             }
-          </select>
-        </label>
+          </div>
+        </div>
+        <div className="filtro-option">
+          <button onClick={toggleFiltroCategoria}>
+            Categoria
+          </button>
+          <div className={`option-container ${categoriaIsActive ? 'active' : ''}`}>
+            {
+              CATEGORIA.map((categoria) => 
+              <div key={categoria} value={categoria} id={categoria} className={`option ${filtroCategoria === categoria ? 'selected' : ''}`} onClick={onClickSelectCategoria}>
+                <a value={categoria} id={categoria}>{categoria}</a>
+              </div>
+              )
+            }
+          </div>
+        </div>
       </div>
     </div>
   )

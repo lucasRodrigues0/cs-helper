@@ -2,19 +2,22 @@ import './App.css';
 import { Galeria } from './components/galeria';
 import { Filtro } from './components/filtro';
 import { useEffect, useState } from 'react';
+import { videosMock } from './mocks/videos';
 import axios from 'axios';
 
 function App() {
 
-  const [galeria, setGaleria] = useState([{videos: []}]);
-  const [galeriaInicial, setGaleriaInicial] = useState([{videos: []}]);
+  // const [galeria, setGaleria] = useState([{videos: []}]);
+  // const [galeriaInicial, setGaleriaInicial] = useState([{videos: []}]);
+  const [galeria, setGaleria] = useState(videosMock);
+  const [galeriaInicial, setGaleriaInicial] = useState(videosMock);
   const [filtroMapa, setFiltroMapa] = useState("Todos");
   const [filtroLado, setFiltroLado] = useState("Todos");
   const [filtroCategoria, setFiltroCategoria] = useState("Todos");
 
-  const client = axios.create({
-    baseURL: "http://localhost:3000"
-  });
+  // const client = axios.create({
+  //   baseURL: "http://localhost:3000"
+  // });
 
   const aplicarFiltros = () => {
     let galeriaFiltrada = galeriaInicial.videos;
@@ -40,24 +43,21 @@ function App() {
 
   const onClickSelectMapa = (event) => {
 
-    const mapa = event.target.value;
-
+    const mapa = event.target.textContent;
     setFiltroMapa(mapa);
 
   }
 
   const onClickSelectLado = (event) => {
 
-    const lado = event.target.value;
-    
+    const lado = event.target.textContent;
     setFiltroLado(lado);
 
   }
 
   const onClickSelectCategoria = (event) => {
 
-    const categoria = event.target.value;
-
+    const categoria = event.target.textContent;
     setFiltroCategoria(categoria);
 
   }
@@ -66,12 +66,16 @@ function App() {
     aplicarFiltros();
   }, [filtroMapa, filtroLado, filtroCategoria]);
 
+  // useEffect(() => {
+  //   client.get('/videos').then((response) => {
+  //     setGaleriaInicial(() => ({
+  //       videos: response.data
+  //     }));
+  //   });
+  // }, []);
+
   useEffect(() => {
-    client.get('/videos').then((response) => {
-      setGaleriaInicial(() => ({
-        videos: response.data
-      }));
-    });
+    setGaleriaInicial(videosMock);
   }, []);
 
   useEffect(() => {
@@ -81,7 +85,13 @@ function App() {
   return (
     <div className='container'>
       <div className="App">
-        <Filtro onClickSelectMapa={onClickSelectMapa} onClickSelectLado={onClickSelectLado} onClickSelectCategoria={onClickSelectCategoria}/>
+        <Filtro onClickSelectMapa={onClickSelectMapa} 
+                onClickSelectLado={onClickSelectLado} 
+                onClickSelectCategoria={onClickSelectCategoria}
+                filtroMapa={filtroMapa}
+                filtroLado={filtroLado}
+                filtroCategoria={filtroCategoria}
+        />
         <Galeria galeria={galeria}/>
       </div>
     </div>
