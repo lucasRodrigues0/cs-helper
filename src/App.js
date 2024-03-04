@@ -3,7 +3,7 @@ import { Galeria } from './components/galeria';
 import { Filtro } from './components/filtro';
 import { useEffect, useState } from 'react';
 import { videosMock } from './mocks/videos';
-import axios from 'axios';
+// import axios from 'axios';
 
 function App() {
 
@@ -76,7 +76,7 @@ function App() {
 
   useEffect(() => {
     setGaleriaInicial(videosMock);
-  }, []);
+  });
 
   useEffect(() => {
     setGaleria(galeriaInicial);
